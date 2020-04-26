@@ -1,0 +1,38 @@
+{
+  "name": "iman",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "dev": "electron . --debug",
+    "test": "mocha && standard",
+    "package": "npm-run-all package:*",
+    "package:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --out=out --icon=zl.icns --osx-sign.identity='Developer ID Application: GitHub' --extend-info=assets/mac/info.plist",
+    "package:win": "electron-packager ./ iman --out ./OutApp --overwrite --icon=zl.ico",
+    "package:linux": "electron-packager . --overwrite --platform=linux --arch=x64 --out=out",
+    "package:sign-exe": "signcode './out/Electron API Demos-win32-ia32/Electron API Demos.exe' --cert ~/electron-api-demos.p12 --prompt --name 'Electron API Demos' --url 'http://electron.atom.io'",
+    "package:installer": "node ./script/installer.js",
+    "package:sign-installer": "signcode './out/windows-installer/ElectronAPIDemosSetup.exe' --cert ~/electron-api-demos.p12 --prompt --name 'Electron API Demos' --url 'http://electron.atom.io'",
+    "xpackage:mas": "./script/mas.sh"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^5.0.2",
+    "electron-packager": "^13.1.1"
+  },
+  "dependencies": {
+    "puppeteer": "^1.17.0",
+    "puppeteer-core": "^1.17.0",
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  }
+}
